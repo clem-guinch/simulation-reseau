@@ -1,0 +1,51 @@
+Sujet projet PHP niveau 2 "développement PHP"
+
+Durée : 5 jours
+
+Contexte
+
+Cette épreuve vise à évaluer votre capacité à développer un site en PHP . C’est une d'une évaluation sur une technologie en particulier, les choix de l'environnement de développement et des technologies associées ne sont donc pas libres. Aucun framework n’est autorisé. Outre son objectif d'évaluation, cette épreuve a vocation à venir enrichir votre portfolio personnel.
+
+
+Durée de l'épreuve
+
+Le travail finalisé devra être rendu avant vendredi 17h00, l'horodatage du dernier push faisant foi.
+
+
+
+
+Sujet
+
+Aspect fonctionnel
+
+Vous êtes freelance pour des projets web, vous avez un rdv client pour une création.
+
+Voici le projet demandé par le client :
+Vous devez créer un site internet forum (type 9gag)
+Gestion d’articles qui ont obligatoirement un titre, du texte, une image/photo ou GIF
+Une page principale permettant de consulter les articles (système de filtre ou simplement par ordre de création/dates)
+Il est obligatoire de s’inscrire et se connecter pour poster des articles et les commenter.
+Seul le créateur de l’article a possibilité de le modifier ou le supprimer (ainsi qu’un admin ayant tous les droits)
+Les informations doivent obligatoirement être sauvegarder car une recherche d’article doit pouvoir être effectué par mots clé ou dates
+
+
+
+Vous veillerez à renseigner les fichiers suivants :
+
+· STACK.md : vous indiquerez l'ensemble des technologies utilisées dans ce projet
+· USAGE.md : vous indiquerez toute information que vous jugerez utiles sur le plan technique visant à permettre l'intégration de nouveaux développeurs sur ce projet
+
+
+
+
+Critères d'évaluation
+
+· qualité générale de la proposition
+· respect de la thématique et pertinence des propositions fonctionnelles
+· qualité de l'interface utilisateur
+
+
+
+Fin d'épreuve anticipée
+
+En cas de rendu des travaux avant le terme du délai imparti, vous mettrez à profit le temps restant à la préparation de votre dossier individuel de soutenance.
