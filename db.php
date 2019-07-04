@@ -72,7 +72,7 @@ function updateComment($updateText, $id, $image) {
 function findOneUser($nom) {
   $connec = new PDO('mysql:dbname=bdd_facebook', DB_ID, DB_PASSWORD);
   $connec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $request = $connec->prepare("SELECT nom, prenom, birthday FROM users WHERE nom = :nom;");
+  $request = $connec->prepare("SELECT nom, prenom, birthday, id FROM users WHERE nom = :nom;");
   $request->execute([
     ":nom" => $nom,
   ]);
@@ -80,7 +80,7 @@ function findOneUser($nom) {
 }
 function deleteComment($id){
   $connec = new PDO("mysql:dbname=bdd_facebook", DB_ID, DB_PASSWORD);
-  $connec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);// cette ligne de code permet d'fficher les erreurs PDO
+  $connec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $request = $connec->prepare("DELETE FROM comments WHERE id = :id ;");
   $request->execute([
     ":id" => $id,
@@ -94,7 +94,7 @@ function getUsers(){
 }
 function deleteUser($id){
   $connec = new PDO("mysql:dbname=bdd_facebook", DB_ID, DB_PASSWORD);
-  $connec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);// cette ligne de code permet d'fficher les erreurs PDO
+  $connec->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $request = $connec->prepare("DELETE FROM users WHERE id = :id ;");
   $request->execute([
     ":id" => $id,

@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('./db.php');
-$comments = getAllComments();
 
+$users = getUsers();
 
 if(isset($_POST['nom'])) {
 	$search = findOneUser($_POST['nom']);
@@ -31,7 +31,7 @@ if(isset($_POST['nom'])) {
 				<div class="inner">
 					<header class="align-center">
 					<form class="formSearch" action="/generic.php" method="post">
-          				<input type="text" name="nom" placeholder="Rechercher">
+          				<input type="text" name="nom" placeholder="Rechercher par nom">
           				<button class="buttonSearch" type="submit" name="button"></button>
         			</form>
 					</header>
@@ -48,7 +48,8 @@ if(isset($_POST['nom'])) {
 							</header>					
        				 <?php if(isset($search)) {
 							foreach($search as $value){
-						echo	"<div class='post'>
+								?>
+								<div class='post'>
 									<div class='dropdown'>
 										<div class='dropdown-content'>
 											<a href='./add.php'>Ajouter en amis</a>
@@ -56,10 +57,21 @@ if(isset($_POST['nom'])) {
 											<a href='./hide.php'>Masquer cet utilisateur</a>
 										</div>
 									</div>
-								<div class='users'><h2>" . $value['prenom'] . " " . $value['nom'] . "</h2> " . $value['birthday'] . "</div>
-							</div>";
+									<div class='users'><h2><?php echo $value['prenom'] ?> <?php echo $value['nom'] ?></h2><?php echo $value['birthday']?></div>
+									<?php if($_SESSION['user']['role_id'] == 1) {?>
+									<?php if($_SESSION['user']['id'] != $value['id']) { ?>
+									<form action='./actions/deleteUserAction.php' method='POST'>
+										<input type='hidden' name='id' value="<?php echo $value['id'] ?>">
+										<button type='submit' value='Supprimer'>Supprimer</button>
+									<?php } 
+									} ?>
+									</form>
+						
+							</div>
+							
+							<?php
+							}
 						}
-					}
 						?>
 						</div>
 					</div>

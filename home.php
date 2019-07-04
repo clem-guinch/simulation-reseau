@@ -2,6 +2,11 @@
 session_start();
 require_once('./db.php');
 $comments = getAllComments();
+
+if($_SESSION['user']['id']) {
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +31,8 @@ $comments = getAllComments();
 				<img src="images/slide01.jpg" alt="" />
 				<div class="inner">
 					<header>
-						<p>A free responsive web site template by <a href="https://templated.co">TEMPLATED</a></p>
-						<h2>Hielo</h2>
+						<p>Tu pensais aller sur Facebook, tu devrais faire plus attention</p>
+						<h2>Securité avant tout</h2>
 					</header>
 				</div>
 			</article>
@@ -35,8 +40,8 @@ $comments = getAllComments();
 				<img src="images/slide02.jpg" alt="" />
 				<div class="inner">
 					<header>
-						<p>Lorem ipsum dolor sit amet nullam feugiat</p>
-						<h2>Magna etiam</h2>
+						<p>Bienvenue quand même, sur notre site</p>
+						<h2>Apprend à te protéger </h2>
 					</header>
 				</div>
 			</article>
@@ -44,8 +49,8 @@ $comments = getAllComments();
 				<img src="images/slide03.jpg"  alt="" />
 				<div class="inner">
 					<header>
-						<p>Sed cursus aliuam veroeros lorem ipsum nullam</p>
-						<h2>Tempus dolor</h2>
+						<p>ne donne jamais tes identifiants a qui que ce soit</p>
+						<h2>Pas de regrets</h2>
 					</header>
 				</div>
 			</article>
@@ -53,8 +58,8 @@ $comments = getAllComments();
 				<img src="images/slide04.jpg"  alt="" />
 				<div class="inner">
 					<header>
-						<p>Adipiscing lorem ipsum feugiat sed phasellus consequat</p>
-						<h2>Etiam feugiat</h2>
+						<p>Des menaces rodent en permanence dans notre société</p>
+						<h2>Sois fort</h2>
 					</header>
 				</div>
 			</article>
@@ -62,8 +67,8 @@ $comments = getAllComments();
 				<img src="images/slide05.jpg"  alt="" />
 				<div class="inner">
 					<header>
-						<p>Ipsum dolor sed magna veroeros lorem ipsum</p>
-						<h2>Lorem adipiscing</h2>
+						<p>ne te laisse plus assouvir</p>
+						<h2>Unchained</h2>
 					</header>
 				</div>
 			</article>
@@ -125,9 +130,9 @@ $comments = getAllComments();
 						</div>
 					</div>
 				</div>
-				<?php
-				}
-				?>
+			<?php
+			}
+			?>
 			</div>
 		</div>
 	</section>
@@ -198,3 +203,6 @@ $comments = getAllComments();
     
   </body>
 </html>
+<?php } else {
+	header('Location: /404.php');die;
+}

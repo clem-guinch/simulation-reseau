@@ -15,7 +15,7 @@ session_start();
 <body>
 	<header>
 		<div class="container">
-			<img src="img/fb.png" alt="">
+			<img src="images/fb.png" alt="">
 			<form class="connectForm" action="/actions/connectAction.php" method="post">
 				<div class="connectFormDiv">				
 					<label for="email">Adresse e-mail ou mobile</label>
@@ -34,7 +34,7 @@ session_start();
 		<div class="main-container">
 		  <div class='left-side<'>
 			<h2 class='titre'><span>Avec Facebook, partagez et restez en contact</span><br><span>avec votre entourage.</span></h2>
-			<img class="entourage" src="img/entourage.png" alt="">
+			<img class="entourage" src="images/entourage.png" alt="">
 		  </div>
 		</div>
 		<div class="second-container">
@@ -66,7 +66,7 @@ session_start();
 		</div>
 	 </main>
 	 <footer>
-	   <img class="footer" src="img/footer.png" alt="">
+	   <img class="footer" src="images/footer.png" alt="">
 	 </footer>
 </body>
 <script type="text/javascript" src="./js/script.js"></script>
