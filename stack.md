@@ -4,6 +4,7 @@
 
 
 - Vagrant,
+- Mysql,
 - Javascript,
 - Html, 
 - Css, 
