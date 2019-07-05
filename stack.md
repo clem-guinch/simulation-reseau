@@ -1,6 +1,10 @@
 # simulation-reseau
+
 ## Les technologies utilisées :
 
-- html, 
-- css, 
-- php
+
+- Vagrant,
+- Javascript,
+- Html, 
+- Css, 
+- Php
