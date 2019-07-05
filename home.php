@@ -41,7 +41,7 @@ if($_SESSION['user']['id']) {
 				<div class="inner">
 					<header>
 						<p>Bienvenue quand même, sur notre site</p>
-						<h2>Apprend à te protéger </h2>
+						<h2>Apprends à te protéger </h2>
 					</header>
 				</div>
 			</article>

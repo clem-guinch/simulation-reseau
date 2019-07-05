@@ -1,27 +1,14 @@
--- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
---
--- Host: localhost    Database: bdd_facebook
--- ------------------------------------------------------
--- Server version	5.7.26-0ubuntu0.16.04.1
+-- Adminer 4.7.1 MySQL dump
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
---
--- Table structure for table `comments`
---
+CREATE DATABASE `bdd_facebook` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `bdd_facebook`;
 
 DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` longtext,
@@ -29,57 +16,36 @@ CREATE TABLE `comments` (
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `comments`
---
-
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (21,'bonsoir nique le code propre\r\n',30,NULL),(22,'dsfdsfdsfkods^dsmcm$dsmc$d^mlc^dslqcp^dlspcldslpcdlcqds^lcdp^slqp^cqdlsp^cldps^qlcdspclp^dsqlcp^dsqlcp^dlsp^clpds^lcdslc^pdsp^clp^dslc^lsq^cldps^lcp^dslp^cldsp^cldp^sqlcp^qdslcp^',30,NULL),(26,'bl',30,'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),(28,'bfdb',30,'https://www.w3schools.com/w3css/img_snowtops.jpg');
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `roles`
---
+INSERT INTO `comments` (`id`, `text`, `user_id`, `image`) VALUES
+(21,	'bonsoir nique le code propre\r\n',	30,	'https://media.giphy.com/media/lz7212bWGdZbkm30KJ/giphy.gif'),
+(35,	'tant mieux',	30,	NULL),
+(37,	'j\'aime le hacking',	32,	'https://parismatch.be/app/uploads/2018/04/Macaca_nigra_self-portrait_large-e1524567086123-1100x715.jpg'),
+(38,	'hftdtguyg',	30,	NULL),
+(39,	'gugltyig\r\n',	30,	NULL),
+(55,	'',	30,	'https://images.ricardocuisine.com/services/recipes/500x675_11597998785236e7e855902.jpg?_ga=2.49145327.810937848.1562162581-1239664816.1562162581');
 
 DROP TABLE IF EXISTS `roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` tinytext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'admin'),(2,'moderator'),(3,'user');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1,	'admin'),
+(2,	'moderator'),
+(3,	'user');
 
 DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prenom` text NOT NULL,
   `nom` text NOT NULL,
   `email` text NOT NULL,
-  `password` tinytext NOT NULL,
+  `password` varchar(60) NOT NULL,
   `birthday` date NOT NULL,
   `gender` tinytext NOT NULL,
   `role_id` int(11) NOT NULL DEFAULT '3',
@@ -88,26 +54,12 @@ CREATE TABLE `users` (
   UNIQUE KEY `id` (`id`),
   KEY `role_id` (`role_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `users`
---
+INSERT INTO `users` (`id`, `prenom`, `nom`, `email`, `password`, `birthday`, `gender`, `role_id`, `mobile`) VALUES
+(30,	'clem',	'guinch',	'clem@clem.fr',	'$2y$10$ZKAdvIWL.5Zc/QoMxV27PuczWdMV0H4v4oJhlKvh4lwomTnnAxy9m',	'2019-07-01',	'homme',	1,	NULL),
+(32,	'alex',	'alex',	'alex@alex.fr',	'$2y$10$vlxVZpRwnvPpCVX2GvVj1OmPjUkGiaPUPXfIWBMjkD9qQ3dk4GCLa',	'2019-07-26',	'femme',	3,	661809558),
+(33,	'philou',	'fil',	'philou@fil.fr',	'$2y$10$FPdGFw8qMy/D1KAzVH1NbuTrkomsELBdXqZD1f0WbqLWC/WVVLx2u',	'2019-04-18',	'homme',	3,	0),
+(35,	'sara',	'sara',	'sara ',	'$2y$10$TwyWqeaf.S6I.l4/qDn/XuMvY0RgpnegPf7kXj54aI200czxrswNm',	'2019-07-05',	'homme',	3,	661809558);
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (30,'clem','guinch','clem@clem.fr','clem','2019-07-01','homme',1,NULL),(31,'alex','alex','alex@alex.Fr','alex','2019-07-01','homme',3,NULL);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2019-07-03 12:40:59
+-- 2019-07-05 07:43:13
